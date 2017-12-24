@@ -9,13 +9,14 @@ import scaled.code.Indenter
 import scaled.grammar._
 import scaled.code.{CodeConfig, Commenter}
 
-object ReasonConfig extends Config.Defs {
+@Plugin(tag="textmate-grammar")
+class ReasonGrammarPlugin extends GrammarPlugin {
   import EditorConfig._
   import CodeConfig._
-  import GrammarConfig._
 
-  // maps TextMate grammar scopes to Scaled style definitions
-  val effacers = List(
+  override def grammars = Map("source.reason" -> "Reason.ndf")
+
+  override def effacers = List(
     effacer("comment.line", commentStyle),
     effacer("comment.block.string", stringStyle),
     effacer("comment.block", docStyle),
@@ -30,8 +31,6 @@ object ReasonConfig extends Config.Defs {
     effacer("support.other.module", moduleStyle),
     effacer("storage", variableStyle)
   )
-
-  val grammars = resource("Reason.ndf")(Grammar.parseNDFs)
 }
 
 @Major(name="reason",
@@ -42,9 +41,7 @@ class ReasonMode (env :Env) extends GrammarCodeMode(env) {
 
   override def dispose () {} // nada for now
 
-  override def configDefs = ReasonConfig :: super.configDefs
-  override def grammars = ReasonConfig.grammars.get
-  override def effacers = ReasonConfig.effacers
+  override def langScope = "source.reason"
 
   override def keymap = super.keymap.
     bind("self-insert-command", "'"); // don't auto-pair single quote
