@@ -1,0 +1,4 @@
+name: Reason Hover
+scopeName: source.reason.hover.type
+patterns:
+ include: source.reason

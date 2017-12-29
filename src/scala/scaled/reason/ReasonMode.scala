@@ -14,7 +14,8 @@ class ReasonGrammarPlugin extends GrammarPlugin {
   import EditorConfig._
   import CodeConfig._
 
-  override def grammars = Map("source.reason" -> "Reason.ndf")
+  override def grammars = Map("source.reason" -> "Reason.ndf",
+                              "source.reason.hover.type" -> "ReasonHover.ndf")
 
   override def effacers = List(
     effacer("comment.line", commentStyle),
