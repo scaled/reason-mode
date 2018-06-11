@@ -5,3 +5,5 @@ descrip: Provides support for editing Reason code.
  weburl: https://github.com/scaled/reason-mode
 license: New BSD
  depend: git:https://github.com/scaled/textmate-grammar.git
+ depend: git:https://github.com/scaled/project-service.git
+ depend: mvn:com.eclipsesource.minimal-json:minimal-json:0.9.4
