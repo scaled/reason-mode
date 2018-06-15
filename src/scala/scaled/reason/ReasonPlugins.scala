@@ -54,8 +54,8 @@ object ReasonPlugins {
     def canActivate (root :Project.Root) =
       Files.exists(root.path.resolve(BsFile)) &&
       Files.exists(root.path.resolve(NodeModules).resolve(LsModule))
-    def createClient (metaSvc :MetaService, root :Project.Root) =
-      Future.success(new ReasonLangClient(metaSvc, root.path, serverCmd(root.path)))
+    def createClient (proj :Project) = Future.success(
+      new ReasonLangClient(proj.metaSvc, proj.root.path, serverCmd(proj.root.path)))
   }
 
   private def serverCmd (root :Path) :Seq[String] = {
