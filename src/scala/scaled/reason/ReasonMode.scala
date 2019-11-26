@@ -40,7 +40,7 @@ class ReasonGrammarPlugin extends GrammarPlugin {
        desc="A major mode for editing Reason code.")
 class ReasonMode (env :Env) extends GrammarCodeMode(env) {
 
-  override def dispose () {} // nada for now
+  override def dispose () :Unit = {} // nada for now
 
   override def langScope = "source.reason"
 

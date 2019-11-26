@@ -22,7 +22,7 @@ object ReasonPlugins {
 
     override def metaFiles (root :Project.Root) = Seq(root.path.resolve(BsFile))
 
-    def addComponents (project :Project) {
+    def addComponents (project :Project) :Unit = {
       val rootPath = project.root.path
       val bsFile = rootPath.resolve(BsFile)
       val config = Json.parse(Files.newBufferedReader(bsFile)).asObject
